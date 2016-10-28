@@ -2,6 +2,7 @@ var games;
 var namesPS3 = [];
 var namesWii = [];
 var names360 = [];
+var namesPC = [];
 
 function preload() {
   games = loadTable(
@@ -24,6 +25,7 @@ function draw() {
   namesPS3.splice(0,namesPS3.length);
   names360.splice(0,names360.length);
   namesWii.splice(0,namesWii.length);
+    namesPC.splice(0,namesPC.length);
   
    for (i = 0; i < games.getRowCount(); i++){
     if( games.getString(i,"Score") >= slider.value() && games.getString(i,"Platform") == "PlayStation 3"){
@@ -34,6 +36,9 @@ function draw() {
     }
      if( games.getString(i,"Score") >= slider.value() && games.getString(i,"Platform") == "Xbox 360"){
       names360.push(games.getString(i,"Game"));
+    }
+     if( games.getString(i,"Score") >= slider.value() && games.getString(i,"Platform") == "PC"){
+      namesPC.push(games.getString(i,"Game"));
     }
   }
   textSize(32);
@@ -46,6 +51,10 @@ function draw() {
   fill(255,0,0);
   rect(220,(height - namesWii.length/10), 80, height);
   text(namesWii.length,220,(height - namesWii.length/10));
+  fill(0,0,0);
+  rect(320,(height - namesPC.length/10), 80, height);
+  text(namesPC.length,320,(height - namesPC.length/10));
+ 
   
  // createP(namesWii.length);
   //createP(names360.length);
